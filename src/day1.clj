@@ -1,5 +1,6 @@
 (ns day1
-  (:require [clojure.java.io :as io])
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str])
 
   )
 
@@ -9,9 +10,7 @@
 
 (defn read-numbers
   [numbers-line]
-  (->> numbers-line
-       (re-matches re)
-       (drop 1)
+  (->> (str/split numbers-line #"\s+")
        (map parse-double)))
 
 (defn into-accs
@@ -32,4 +31,6 @@
          (map abs)
          (reduce +)
          int))
+  ;; => 1506483
+
   ,)
