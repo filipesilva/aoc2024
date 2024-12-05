@@ -1,10 +1,6 @@
 (ns day1
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str])
-
-  )
-
-(def input (io/resource "day1/input.txt"))
+  (:require [clojure.string :as str]
+            [util :as u]))
 
 (def re #"(\d+)\s+(\d+)")
 
@@ -18,32 +14,27 @@
   [[acc1 acc2] [n1 n2]]
   [(conj acc1 n1) (conj acc2 n2)])
 
-(defn read-all [rdr]
-  (->> rdr
-       line-seq
-       doall ;; not needed after adding reduce
-       ;; (take 100)
+(def parsed-input
+  (->> "day1/input.txt"
+       u/input-line-seq
        (map read-numbers)
        (reduce into-accs [[] []])))
 
 (comment
   ;; part 1
-  (with-open [rdr (io/reader (io/resource "day1/input.txt"))]
-    (->> rdr
-         read-all
-         (map sort)
-         (apply map -)
-         (map abs)
-         (reduce +)))
+  (->> parsed-input
+       (map sort)
+       (apply map -)
+       (map abs)
+       (reduce +))
   ;; => 1506483
 
 
   ;; part 2
-  (with-open [rdr (io/reader (io/resource "day1/input.txt"))]
-    (let [[one two] (read-all rdr)
-          freqs     (frequencies two)]
-      (->> one
-           (map #(* %(get freqs % 0)))
-           (reduce +))))
+  (let [[one two] parsed-input
+        freqs     (frequencies two)]
+    (->> one
+         (map #(* %(get freqs % 0)))
+         (reduce +)))
   ;; => 23126924
   ,)
