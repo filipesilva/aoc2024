@@ -4,7 +4,7 @@
 (def parsed-input
   (->>
    "day-04/input.txt"
-   #_"day4/example.txt"
+   #_"day-04/example.txt"
    u/input-line-seq
    vec ;; needed for get-in over vec
    ))

@@ -5,7 +5,7 @@
 @(def parsed-input
   (->>
    "day-02/input.txt"
-   ;; "day2/example.txt"
+   ;; "day-02/example.txt"
    u/input-line-seq
    (map #(str/split % #"\s+"))
    (u/mmap (comp int parse-double))))
