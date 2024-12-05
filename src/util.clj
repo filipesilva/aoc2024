@@ -10,3 +10,6 @@
 (comment
   (input-line-seq "day1/input.txt")
   )
+
+(defn mmap [f coll]
+  (map #(map f %) coll))
