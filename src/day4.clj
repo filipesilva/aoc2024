@@ -5,7 +5,9 @@
   (->>
    "day4/input.txt"
    #_"day4/example.txt"
-   u/input-line-seq))
+   u/input-line-seq
+   vec ;; needed for get-in over vec
+   ))
 
 (defn c
   "c is for coord"
@@ -33,18 +35,10 @@
      (c -1 1)  (c 0 0)  (c 1 -1) ; down-right
      ]))
 
-(defn lookup
-  [[row col]]
-  (try
-    (-> parsed-input
-        (nth row)
-        (nth col))
-    (catch java.lang.IndexOutOfBoundsException _)))
-
 (defn vlookup
   [v]
   (->> v
-       (map lookup)
+       (map (partial get-in parsed-input))
        (apply str)))
 
 (defn to-coords
@@ -68,7 +62,6 @@
   ;; => 2599
 
   ;; part 2
-
   (->> parsed-input
        to-coords
        (apply concat)
