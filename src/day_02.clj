@@ -1,10 +1,10 @@
-(ns day2
+(ns day-02
   (:require [clojure.string :as str]
             [util :as u]))
 
 @(def parsed-input
   (->>
-   "day2/input.txt"
+   "day-02/input.txt"
    ;; "day2/example.txt"
    u/input-line-seq
    (map #(str/split % #"\s+"))

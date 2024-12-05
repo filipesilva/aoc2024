@@ -1,4 +1,4 @@
-(ns day1
+(ns day-01
   (:require [clojure.string :as str]
             [util :as u]))
 
@@ -15,7 +15,7 @@
   [(conj acc1 n1) (conj acc2 n2)])
 
 (def parsed-input
-  (->> "day1/input.txt"
+  (->> "day-01/input.txt"
        u/input-line-seq
        (map read-numbers)
        (reduce into-accs [[] []])))

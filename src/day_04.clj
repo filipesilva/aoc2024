@@ -1,9 +1,9 @@
-(ns day4
+(ns day-04
   (:require [util :as u]))
 
 (def parsed-input
   (->>
-   "day4/input.txt"
+   "day-04/input.txt"
    #_"day4/example.txt"
    u/input-line-seq
    vec ;; needed for get-in over vec
