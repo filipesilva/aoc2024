@@ -1,6 +1,5 @@
 (ns day-03
-  (:require [clojure.string :as str]
-            [util :as u]))
+  (:require [util :as u]))
 
 @(def parsed-input
   (->>
@@ -36,8 +35,6 @@
        (map (partial apply *))
        (reduce +))
   ;; => 171183089
-
-  partition-by
 
   ;; part 2
   (->> parsed-input
